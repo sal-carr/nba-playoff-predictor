@@ -10,12 +10,12 @@ Modules:
 
 __version__ = "1.0.0"
 
-from .data_acquisition import fetch_nba_games
+from .data_acquisition import fetch_enhanced_games_for_seasons
 from .feature_engineering import build_enhanced_features, get_enhanced_feature_columns
 from .io_utils import load_game_data, save_predictions
 
 __all__ = [
-    "fetch_nba_games",
+    "fetch_enhanced_games_for_seasons",
     "build_enhanced_features",
     "get_enhanced_feature_columns",
     "load_game_data",

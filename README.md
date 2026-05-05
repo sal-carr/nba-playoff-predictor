@@ -51,6 +51,10 @@ python scripts/predict_next_games.py
 ├── src/                    # Core library
 │   ├── data_acquisition.py # Fetch data from NBA API
 │   ├── feature_engineering.py # Build ML features
+│   ├── advanced_features.py # Schedule/momentum features
+│   ├── ensemble.py         # Model ensembling
+│   ├── injury_data.py      # ESPN injury API
+│   ├── betting_lines.py    # Betting lines integration
 │   ├── io_utils.py         # Data I/O utilities
 │   └── series_simulation.py # Monte Carlo simulation
 │
@@ -72,6 +76,7 @@ python scripts/predict_next_games.py
 ├── docs/                   # Documentation
 │   ├── ARCHITECTURE.md     # System design
 │   ├── API.md              # API reference
+│   ├── MODEL_IMPROVEMENTS.md # Experiment results
 │   └── TUTORIAL.md         # Original tutorial
 │
 └── results/                # Prediction outputs
@@ -114,7 +119,20 @@ Two prediction modes:
 |--------|-------|
 | AUC | 0.715 |
 | Accuracy | 65.2% |
-| Best Model | Random Forest |
+| Best Model | Random Forest (200 trees, depth 10) |
+
+### Improvement Experiments
+
+We tested several approaches to improve the baseline:
+
+| Approach | Result |
+|----------|--------|
+| Ensemble (RF + XGB + GBM) | -1.5% AUC |
+| Advanced features (+6) | -0.2% AUC |
+| Calibration (isotonic) | -2.9% AUC |
+| Feature selection (top 25) | -0.4% AUC |
+
+**Conclusion**: The baseline model is well-optimized for available data. Further gains require more training data, player-level injury data, or real betting lines. See [Model Improvements](docs/MODEL_IMPROVEMENTS.md) for details.
 
 ## Example Output
 
@@ -150,6 +168,7 @@ make card           # View evaluation card
 
 - [Architecture](docs/ARCHITECTURE.md) - System design and data flow
 - [API Reference](docs/API.md) - Module and function documentation
+- [Model Improvements](docs/MODEL_IMPROVEMENTS.md) - Experiment results and findings
 - [Tutorial](docs/TUTORIAL.md) - Original Metaflow tutorial
 - [Learnings](docs/learnings/) - Project retrospective
 
