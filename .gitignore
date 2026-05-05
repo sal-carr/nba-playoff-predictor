@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Metaflow
+.metaflow/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+*.env
+
+# Data files (keep sample data only)
+data/raw/*.csv
+data/processed/*.csv
+data/prediction/*.csv
+!data/sample/*.csv
+
+# Logs
+logs/
+
+# Results (keep sample predictions)
+results/*.csv
+results/*.log
+!results/sample_predictions.csv
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Claude Code internal
+.claude/
+
+# Secrets
+*.pem
+*.key
+credentials.json

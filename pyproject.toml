@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nba-playoff-predictor"
+version = "1.0.0"
+description = "NBA playoff prediction pipeline using Metaflow and machine learning"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Sal Carrasco"}
+]
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+keywords = ["nba", "basketball", "prediction", "machine-learning", "metaflow"]
+dependencies = [
+    "metaflow>=2.19",
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "scikit-learn>=1.3",
+    "xgboost>=2.0",
+    "nba_api>=1.4",
+    "matplotlib>=3.7",
+    "pyarrow>=14.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "ruff>=0.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/salcarrasco/nba-playoff-predictor"
+Documentation = "https://github.com/salcarrasco/nba-playoff-predictor#readme"
+Repository = "https://github.com/salcarrasco/nba-playoff-predictor"
+Issues = "https://github.com/salcarrasco/nba-playoff-predictor/issues"
+
+[project.scripts]
+nba-predict-series = "scripts.predict_series:main"
+nba-predict-games = "scripts.predict_next_games:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "flows*", "scripts*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
